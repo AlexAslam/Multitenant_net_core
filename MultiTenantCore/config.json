@@ -1,0 +1,44 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnectionString": "server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;"
+  },
+  "Data": {
+    "ConnectionString": "server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;"
+  },
+  "DatabaseData": {
+    "DatabaseName": "MultiTenantCore",
+    "Server": "localhost",
+    "Port": "5432",
+    "UserId": "postgres",
+    "password": "alex"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "Multitenancy": {
+    "Tenants": [
+      {
+        "Name": "Tenant 1",
+        "Hostnames": [
+          "localhost:60000",
+          "localhost:60001",
+          "localhost:51261"
+        ],
+        "Theme": "Cerulean",
+        "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=saaskit-sample-tenant1;Trusted_Connection=True;MultipleActiveResultSets=true"
+      },
+      {
+        "Name": "Tenant 2",
+        "Hostnames": [
+          "localhost:60002"
+        ],
+        "Theme": "Darkly",
+        "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=saaskit-sample-tenant2;Trusted_Connection=True;MultipleActiveResultSets=true"
+      }
+    ]
+  }
+}
+
