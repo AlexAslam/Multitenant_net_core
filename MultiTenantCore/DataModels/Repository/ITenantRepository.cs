@@ -8,6 +8,6 @@ namespace MultiTenantCore.DataModels.Repository
         IEnumerable<Tenant> getAllTenants();
         Tenant getTenantById(int id);
         void saveAll();
-        void addEntity(Tenant newTenant);
+        bool addEntity(Tenant newTenant);
     }
 }

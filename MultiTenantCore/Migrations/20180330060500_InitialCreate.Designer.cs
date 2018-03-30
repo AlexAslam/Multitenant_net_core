@@ -11,7 +11,7 @@ using System;
 namespace MultiTenantCore.Migrations
 {
     [DbContext(typeof(TenantContext))]
-    [Migration("20180328134501_InitialCreate")]
+    [Migration("20180330060500_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -64,8 +64,14 @@ namespace MultiTenantCore.Controllers
                 if (ModelState.IsValid)
                 {
                     var newTenant = _mapper.Map<TenantViewModel, Tenant>(model);
-                    _tenantRepository.addEntity(newTenant);
-                    return Created($"api/Tenant/{newTenant.Id}", _mapper.Map<Tenant, TenantViewModel>(newTenant));
+                    if (_tenantRepository.addEntity(newTenant))
+                    {
+                        return Created($"api/Tenant/{newTenant.Id}", _mapper.Map<Tenant, TenantViewModel>(newTenant));
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
                 }
                 else
                 {

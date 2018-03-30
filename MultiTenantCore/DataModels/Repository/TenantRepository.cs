@@ -53,7 +53,7 @@ namespace MultiTenantCore.DataModels.Repository
 
         public void saveAll()
         {
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public string onTenantEntry(Tenant connection_name)
@@ -67,24 +67,47 @@ namespace MultiTenantCore.DataModels.Repository
             var connectionString = $"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore{connection_name.SubDomainName};Integrated Security=true;";
             dbContextOptionsBuilder.UseNpgsql(@connectionString);
             ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder.Options);
-            context.Database.EnsureCreatedAsync();
-            return connectionString;
-            //DbContextFactory.Create();
-            //_dbContextOptions. .UseNpgsql(@"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantAlche;Integrated Security=true;");
-
-            /*_dbContextOptionsBuilder.UseNpgsql($"server={ServerName};Port={PortName};User Id={UserIdName};password={PasswordName};DataBase={connection_name.SubDomainName};Integrated Security=true;");*/
+            if (context.Database.EnsureCreated())
+            {
+                context.Database.Migrate();
+                return connectionString;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public void addEntity(Tenant newTenant)
+        public bool addEntity(Tenant newTenant)
         {
             _context.Add(newTenant);
             saveAll();
-            var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
-            dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
-            TenantContext tenantContext_temp = new TenantContext(dbContextOptionsBuilder.Options);
-            Tenant recent_tenant = tenantContext_temp.Tenants.Last();
-            recent_tenant.ConnectionStringName = onTenantEntry(newTenant);
-            tenantContext_temp.SaveChanges();
+            string connectionString = null;
+            try
+            {
+                connectionString = onTenantEntry(newTenant);
+            }
+            catch(Exception ex)
+            {
+                connectionString = null;
+            }
+            try
+            {
+                if (connectionString != null)
+                {
+                    var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
+                    dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
+                    TenantContext tenantContext_temp = new TenantContext(dbContextOptionsBuilder.Options);
+                    Tenant recent_tenant = tenantContext_temp.Tenants.Last();
+                    recent_tenant.ConnectionStringName = connectionString;
+                    tenantContext_temp.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
