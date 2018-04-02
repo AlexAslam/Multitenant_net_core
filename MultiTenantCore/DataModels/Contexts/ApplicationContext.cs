@@ -9,28 +9,31 @@ using System.Threading.Tasks;
 namespace MultiTenantCore.DataModels.Contexts
 {
     public class ApplicationContext : DbContext
-    {
-        private readonly TenantContext _tenantContext;
+    { 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
+            System.Console.WriteLine($"DbContextOptions= ApplicationContext ApplicationContext ==============================>: ");
         }
-
         public ApplicationContext()
         {
+            System.Console.WriteLine($"DbContextOptions= ApplicationContext ApplicationContext ==============================>: Empty ");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            System.Console.WriteLine($"DbContextOptions= ModelBuilder ApplicationContext ==============================>: ");
+            base.OnModelCreating(modelBuilder);
+        }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            foreach (Tenant newTenant in TenantContext.Tenants.ToList()) {
-                optionsBuilder.UseNpgsql(@newTenant.ConnectionStringName);
-            }
+            System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>: ");
+            base.OnConfiguring(optionsBuilder);
         }
 
 
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
-
-        public TenantContext TenantContext => _tenantContext;
     }
 }

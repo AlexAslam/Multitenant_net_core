@@ -21,21 +21,22 @@ namespace MultiTenantCore
     public class Startup
     {
         private readonly IConfiguration _config;
-        
+        private readonly IMigrationRepository _migrationRepository;
         public Startup(IConfiguration config)
         {
             _config = config;
+            System.Console.WriteLine($"app===============================>: startup config");
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            System.Console.WriteLine($"app===============================>: startup services");
             services.AddDbContext<TenantContext>();
-            
-
             services.AddScoped<HeaderInService>();
             services.AddAutoMapper();
             services.AddScoped<ITenantRepository, TenantRepository>();
+            services.AddScoped<IMigrationRepository, MigrationRepository>();
             services.AddMvc();
         }
 
@@ -46,6 +47,10 @@ namespace MultiTenantCore
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+
+            _migrationRepository.AddMigration();
+            System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
 
             app.UseMvc();
         }

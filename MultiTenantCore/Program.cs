@@ -15,6 +15,7 @@ namespace MultiTenantCore
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
+            System.Console.WriteLine($"In Program File! Builder Web Host");
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
@@ -24,6 +25,7 @@ namespace MultiTenantCore
                 .Build();
         public static void SetupConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder builder)
         {
+            System.Console.WriteLine($"In Program File!");
             // removing the default configuration options
             builder.Sources.Clear();
 

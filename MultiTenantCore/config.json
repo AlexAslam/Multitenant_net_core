@@ -2,16 +2,6 @@
   "ConnectionStrings": {
     "DefaultConnectionString": "server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;"
   },
-  "Data": {
-    "ConnectionString": "server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;"
-  },
-  "DatabaseData": {
-    "DatabaseName": "MultiTenantCore",
-    "Server": "localhost",
-    "Port": "5432",
-    "UserId": "postgres",
-    "password": "alex"
-  },
   "Logging": {
     "LogLevel": {
       "Default": "Information",

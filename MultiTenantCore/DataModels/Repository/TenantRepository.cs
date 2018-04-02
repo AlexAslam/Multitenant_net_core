@@ -58,11 +58,6 @@ namespace MultiTenantCore.DataModels.Repository
 
         public string onTenantEntry(Tenant connection_name)
         {
-            var databaseName = _configuration["DatabaseData:DatabaseName"];
-            var ServerName = _configuration["DatabaseData:Server"];
-            var PortName = _configuration["DatabaseData:Port"];
-            var UserIdName = _configuration["DatabaseData:UserId"];
-            var PasswordName = _configuration["DatabaseData:password"];
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var connectionString = $"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore{connection_name.SubDomainName};Integrated Security=true;";
             dbContextOptionsBuilder.UseNpgsql(@connectionString);

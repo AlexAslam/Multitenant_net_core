@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MultiTenantCore.DataModels.Contexts;
 using MultiTenantCore.DataModels.Entities;
-using MultiTenantCore.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MultiTenantCore.DataModels.Repository
+namespace MultiTenantCore.DataModels
 {
-    public class MigrationRepository : IMigrationRepository
+    public class AppSeeder
     {
-        private readonly ApplicationContext _applicationContext;
         private readonly TenantContext _tenantContext;
+        private readonly ApplicationContext _applicationContext;
         private readonly IConfiguration _configuration;
-        public MigrationRepository(ApplicationContext applicationContext,TenantContext tenantContext,IConfiguration configuration)
+        public AppSeeder(TenantContext tenantContext,ApplicationContext applicationContext,IConfiguration configuration)
         {
-            _applicationContext = applicationContext;
             _tenantContext = tenantContext;
+            _applicationContext = applicationContext;
             _configuration = configuration;
         }
-
-        public void AddMigration()
+        public void AddMigrations()
         {
             var tenants = _tenantContext.Tenants.ToList();
             foreach (Tenant newtenant in tenants)
@@ -42,7 +40,6 @@ namespace MultiTenantCore.DataModels.Repository
                 var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
                 dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
             }
-            
         }
     }
 }
