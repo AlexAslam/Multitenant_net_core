@@ -14,22 +14,18 @@ namespace MultiTenantCore.DataModels.Contexts
         {
             System.Console.WriteLine($"DbContextOptions= ApplicationContext ApplicationContext ==============================>: ");
         }
-        public ApplicationContext()
-        {
-            System.Console.WriteLine($"DbContextOptions= ApplicationContext ApplicationContext ==============================>: Empty ");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            System.Console.WriteLine($"DbContextOptions= ModelBuilder ApplicationContext ==============================>: ");
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    System.Console.WriteLine($"DbContextOptions= ModelBuilder ApplicationContext ==============================>: ");
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>: ");
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>: ");
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
 
         public DbSet<Employee> Employees { get; set; }

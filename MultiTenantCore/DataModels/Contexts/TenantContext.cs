@@ -11,12 +11,6 @@ namespace MultiTenantCore.DataModels.Contexts
         {
             System.Console.WriteLine($"DbContextOptions= TenantContext ApplicationContext ==============================>: ");
         }
-        
-
-        public TenantContext()
-        {
-            System.Console.WriteLine($"DbContextOptions= TenantContext ApplicationContext ==============================>: Empty");
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

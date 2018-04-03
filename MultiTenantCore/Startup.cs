@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MultiTenantCore.DataModels;
 using MultiTenantCore.DataModels.Contexts;
 using MultiTenantCore.DataModels.Repository;
 using MultiTenantCore.Helpers;
@@ -21,7 +22,6 @@ namespace MultiTenantCore
     public class Startup
     {
         private readonly IConfiguration _config;
-        private readonly IMigrationRepository _migrationRepository;
         public Startup(IConfiguration config)
         {
             _config = config;
@@ -33,8 +33,10 @@ namespace MultiTenantCore
         {
             System.Console.WriteLine($"app===============================>: startup services");
             services.AddDbContext<TenantContext>();
+            services.AddDbContext<ApplicationContext>();
             services.AddScoped<HeaderInService>();
             services.AddAutoMapper();
+            services.AddTransient<AppSeeder>();
             services.AddScoped<ITenantRepository, TenantRepository>();
             services.AddScoped<IMigrationRepository, MigrationRepository>();
             services.AddMvc();
@@ -47,12 +49,14 @@ namespace MultiTenantCore
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-
-            _migrationRepository.AddMigration();
             System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
 
             app.UseMvc();
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<AppSeeder>();
+                seeder.AddMigrations();
+            }
         }
     }
 }

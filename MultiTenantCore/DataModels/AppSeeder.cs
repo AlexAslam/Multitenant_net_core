@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using MultiTenantCore.DataModels.Contexts;
 using MultiTenantCore.DataModels.Entities;
 using System;
@@ -12,16 +13,17 @@ namespace MultiTenantCore.DataModels
     public class AppSeeder
     {
         private readonly TenantContext _tenantContext;
-        private readonly ApplicationContext _applicationContext;
         private readonly IConfiguration _configuration;
-        public AppSeeder(TenantContext tenantContext,ApplicationContext applicationContext,IConfiguration configuration)
+        private readonly ILogger<ApplicationContext> _logger;
+        public AppSeeder(TenantContext tenantContext, IConfiguration configuration,ILogger<ApplicationContext> logger)
         {
+            _logger = logger;
             _tenantContext = tenantContext;
-            _applicationContext = applicationContext;
             _configuration = configuration;
         }
         public void AddMigrations()
         {
+            System.Console.WriteLine($"app===============================>: in Migration Method!");
             var tenants = _tenantContext.Tenants.ToList();
             foreach (Tenant newtenant in tenants)
             {
@@ -29,9 +31,14 @@ namespace MultiTenantCore.DataModels
                 {
                     var dbContextOptionsBuilder_ = new DbContextOptionsBuilder<ApplicationContext>();
                     dbContextOptionsBuilder_.UseNpgsql(newtenant.ConnectionStringName);
-                    if (_applicationContext.Database.EnsureCreated())
+                    System.Console.WriteLine($"app===============================>: {newtenant.ConnectionStringName}");
+                    ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder_.Options);
+                    if (context.Database.EnsureCreated())
                     {
-                        _applicationContext.Database.Migrate();
+                        context.Database.Migrate();
+                    }
+                    else {
+                        context.Database.Migrate();
                     }
                 }
                 catch
@@ -39,6 +46,7 @@ namespace MultiTenantCore.DataModels
                 }
                 var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
                 dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
+                System.Console.WriteLine($"app===============================>: {_configuration.GetConnectionString("DefaultConnectionString")}");
             }
         }
     }
