@@ -9,6 +9,10 @@ namespace MultiTenantCore.DataModels.Contexts
     {
         public TenantContext(DbContextOptions<TenantContext> options) : base(options)
         {
+            //var optionsBuilder = new DbContextOptionsBuilder<TenantContext>();
+            //optionsBuilder.UseNpgsql(@"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;");
+
+
             System.Console.WriteLine($"DbContextOptions= TenantContext ApplicationContext ==============================>: ");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -6190,7 +6190,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "/V6cqENF+2vWoDa1xHt7BIwnlYjxxh7ELHkq+s4R2taKbfDncI1eOFZEhpE8cJ7SlB0AVVIpsmCLkbWPbyqgLA==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -8191,7 +8191,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
+      "sha512": "j2Ri3cwOmJSfEfVw6bPT6iy+0G/NLx+UxRwEBcKffIHLijmVi0dOctWf38oxmuVbo9Z91j3fchN21GzX5oCpcw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -10797,7 +10797,7 @@
       ]
     },
     "System.Private.DataContractSerialization/4.1.1": {
-      "sha512": "lcqFBUaCZxPiUkA4dlSOoPZGtZsAuuElH2XHgLwGLxd7ZozWetV5yiz0qGAV2AUYOqw97MtZBjbLMN16Xz4vXA==",
+      "sha512": "oeU/K62VKsnvC7wSV0xMQe3IorvfpNQuVWx0HW5bsI8qI/9OQLf4v8xLoCBRC5i4HbphyjlXv+PGGCNs+eW/VA==",
       "type": "package",
       "path": "system.private.datacontractserialization/4.1.1",
       "files": [
@@ -11680,7 +11680,7 @@
       ]
     },
     "System.Runtime.Serialization.Json/4.0.2": {
-      "sha512": "+7DIJhnKYgCzUgcLbVTtRQb2l1M0FP549XFlFkQM5lmNiUBl44AfNbx4bz61xA8PzLtlYwfmif4JJJW7MPPnjg==",
+      "sha512": "QGwY7X0GNRX6FjQbg1lHeYzysoYPh5BOrUCp/85vgdOtdDEhrLtwsJB287n8irpTPVfxwDJRVypZmbsjPkecqA==",
       "type": "package",
       "path": "system.runtime.serialization.json/4.0.2",
       "files": [
@@ -13125,7 +13125,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.0.11": {
-      "sha512": "FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
+      "sha512": "dvrmZP8P2d9cunF7uPR3szz1KsDcZPVblR99PTSIpOEIWDdx6zMjJXKY0cOtHk4F4gED5FqeqrOvtgCLM2wlyw==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.0.11",
       "files": [
@@ -13304,28 +13304,30 @@
     ]
   },
   "packageFolders": {
-    "/home/alex/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\alexa\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/alex/net_core_2_dir/Multitenant_net_core/MultiTenantCore/MultiTenantCore.csproj",
+      "projectUniqueName": "C:\\Users\\alexa\\source\\repos\\MultiTenantCore\\MultiTenantCore\\MultiTenantCore.csproj",
       "projectName": "MultiTenantCore",
-      "projectPath": "/home/alex/net_core_2_dir/Multitenant_net_core/MultiTenantCore/MultiTenantCore.csproj",
-      "packagesPath": "/home/alex/.nuget/packages/",
-      "outputPath": "/home/alex/net_core_2_dir/Multitenant_net_core/MultiTenantCore/obj/",
+      "projectPath": "C:\\Users\\alexa\\source\\repos\\MultiTenantCore\\MultiTenantCore\\MultiTenantCore.csproj",
+      "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alexa\\source\\repos\\MultiTenantCore\\MultiTenantCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/alex/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

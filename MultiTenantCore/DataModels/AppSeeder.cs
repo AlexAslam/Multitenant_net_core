@@ -24,29 +24,36 @@ namespace MultiTenantCore.DataModels
         public void AddMigrations()
         {
             System.Console.WriteLine($"app===============================>: in Migration Method!");
-            var tenants = _tenantContext.Tenants.ToList();
-            foreach (Tenant newtenant in tenants)
+            if (_tenantContext.Tenants.Any())
             {
-                try
+                var tenants = _tenantContext.Tenants.ToList();
+                foreach (Tenant newtenant in tenants)
                 {
-                    var dbContextOptionsBuilder_ = new DbContextOptionsBuilder<ApplicationContext>();
-                    dbContextOptionsBuilder_.UseNpgsql(newtenant.ConnectionStringName);
-                    System.Console.WriteLine($"app===============================>: {newtenant.ConnectionStringName}");
-                    ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder_.Options);
-                    if (context.Database.EnsureCreated())
+                    try
                     {
-                        context.Database.Migrate();
+                        var dbContextOptionsBuilder_ = new DbContextOptionsBuilder<ApplicationContext>();
+                        dbContextOptionsBuilder_.UseNpgsql(newtenant.ConnectionStringName);
+                        System.Console.WriteLine($"app===============================>: {newtenant.ConnectionStringName}");
+                        ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder_.Options);
+                        if (context.Database.EnsureCreated())
+                        {
+                            context.Database.Migrate();
+                        }
+                        else
+                        {
+                            context.Database.Migrate();
+                        }
                     }
-                    else {
-                        context.Database.Migrate();
+                    catch
+                    {
                     }
+                    var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
+                    dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
+                    System.Console.WriteLine($"app===============================>: {_configuration.GetConnectionString("DefaultConnectionString")}");
                 }
-                catch
-                {
-                }
-                var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
-                dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
-                System.Console.WriteLine($"app===============================>: {_configuration.GetConnectionString("DefaultConnectionString")}");
+            }
+            else {
+                _tenantContext.Database.EnsureCreated();
             }
         }
     }

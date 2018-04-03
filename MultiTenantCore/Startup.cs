@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MultiTenantCore.DataModels;
@@ -25,7 +26,10 @@ namespace MultiTenantCore
         public void ConfigureServices(IServiceCollection services)
         {
             System.Console.WriteLine($"app===============================>: startup services");
-            services.AddDbContext<TenantContext>();
+            services.AddDbContext<TenantContext>(options=>
+            {
+                options.UseNpgsql(@"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;");
+            });
             services.AddDbContext<ApplicationContext>();
             services.AddScoped<HeaderInService>();
             services.AddAutoMapper();
@@ -44,7 +48,7 @@ namespace MultiTenantCore
             }
             System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
             app.UseMvc();
-                using (var scope = app.ApplicationServices.CreateScope())
+            using (var scope = app.ApplicationServices.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<AppSeeder>();
                 seeder.AddMigrations();
