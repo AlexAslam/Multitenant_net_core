@@ -52,11 +52,11 @@ namespace MultiTenantCore
             System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
 
             app.UseMvc();
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var seeder = scope.ServiceProvider.GetService<AppSeeder>();
-                seeder.AddMigrations();
-            }
+            // using (var scope = app.ApplicationServices.CreateScope())
+            // {
+            //     var seeder = scope.ServiceProvider.GetService<AppSeeder>();
+            //     seeder.AddMigrations();
+            // }
         }
     }
 }

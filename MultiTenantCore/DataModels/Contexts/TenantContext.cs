@@ -21,7 +21,7 @@ namespace MultiTenantCore.DataModels.Contexts
         {
             base.OnConfiguring(optionsBuilder);
             System.Console.WriteLine($"DbContextOptions= TenantContext optionsBuilder =================================>:");
-            optionsBuilder.UseNpgsql(@"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;");
+            optionsBuilder.UseNpgsql(@"server=localhost;Port=5432;User Id=alex;password=alex;DataBase=MultiTenantCore;Integrated Security=true;");
         }
         public DbSet<Tenant> Tenants { get; set; }
         

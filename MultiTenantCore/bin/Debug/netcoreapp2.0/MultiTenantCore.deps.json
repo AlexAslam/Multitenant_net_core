@@ -26,6 +26,7 @@
           "AutoMapper": "6.2.2",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "3.2.0",
           "Microsoft.AspNetCore.All": "2.0.6",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3",
           "Npgsql": "3.2.7",
@@ -4972,7 +4973,7 @@
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/V6cqENF+2vWoDa1xHt7BIwnlYjxxh7ELHkq+s4R2taKbfDncI1eOFZEhpE8cJ7SlB0AVVIpsmCLkbWPbyqgLA==",
+      "sha512": "sha512-HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "hashPath": "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512"
     },
@@ -5602,7 +5603,7 @@
     "Remotion.Linq/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-j2Ri3cwOmJSfEfVw6bPT6iy+0G/NLx+UxRwEBcKffIHLijmVi0dOctWf38oxmuVbo9Z91j3fchN21GzX5oCpcw==",
+      "sha512": "sha512-IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "path": "remotion.linq/2.1.1",
       "hashPath": "remotion.linq.2.1.1.nupkg.sha512"
     },
@@ -6134,7 +6135,7 @@
     "System.Private.DataContractSerialization/4.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oeU/K62VKsnvC7wSV0xMQe3IorvfpNQuVWx0HW5bsI8qI/9OQLf4v8xLoCBRC5i4HbphyjlXv+PGGCNs+eW/VA==",
+      "sha512": "sha512-lcqFBUaCZxPiUkA4dlSOoPZGtZsAuuElH2XHgLwGLxd7ZozWetV5yiz0qGAV2AUYOqw97MtZBjbLMN16Xz4vXA==",
       "path": "system.private.datacontractserialization/4.1.1",
       "hashPath": "system.private.datacontractserialization.4.1.1.nupkg.sha512"
     },
@@ -6260,7 +6261,7 @@
     "System.Runtime.Serialization.Json/4.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QGwY7X0GNRX6FjQbg1lHeYzysoYPh5BOrUCp/85vgdOtdDEhrLtwsJB287n8irpTPVfxwDJRVypZmbsjPkecqA==",
+      "sha512": "sha512-+7DIJhnKYgCzUgcLbVTtRQb2l1M0FP549XFlFkQM5lmNiUBl44AfNbx4bz61xA8PzLtlYwfmif4JJJW7MPPnjg==",
       "path": "system.runtime.serialization.json/4.0.2",
       "hashPath": "system.runtime.serialization.json.4.0.2.nupkg.sha512"
     },
@@ -6477,7 +6478,7 @@
     "System.Xml.XmlSerializer/4.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dvrmZP8P2d9cunF7uPR3szz1KsDcZPVblR99PTSIpOEIWDdx6zMjJXKY0cOtHk4F4gED5FqeqrOvtgCLM2wlyw==",
+      "sha512": "sha512-FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
       "path": "system.xml.xmlserializer/4.0.11",
       "hashPath": "system.xml.xmlserializer.4.0.11.nupkg.sha512"
     },
