@@ -60,6 +60,7 @@ namespace MultiTenantCore.DataModels.Repository
         {
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var connectionString = $"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore{connection_name.SubDomainName};Integrated Security=true;";
+            System.Console.WriteLine($"app===============================>: {connectionString}");
             dbContextOptionsBuilder.UseNpgsql(@connectionString);
             ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder.Options);
             if (context.Database.EnsureCreated())
@@ -92,6 +93,7 @@ namespace MultiTenantCore.DataModels.Repository
                 {
                     var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
                     dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
+                    System.Console.WriteLine($"app===============================>: {_configuration.GetConnectionString("DefaultConnectionString")}");
                     TenantContext tenantContext_temp = new TenantContext(dbContextOptionsBuilder.Options);
                     Tenant recent_tenant = tenantContext_temp.Tenants.Last();
                     recent_tenant.ConnectionStringName = connectionString;

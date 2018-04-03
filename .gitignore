@@ -1,3 +1,5 @@
 .vs
 TestingMultiTenantCore
 MultiTenantCore/Migrations
+MultiTenantCore/bin
+MultiTenantCore/obj
