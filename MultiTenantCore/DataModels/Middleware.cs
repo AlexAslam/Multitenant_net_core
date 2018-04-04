@@ -45,7 +45,9 @@ namespace MultiTenantCore.DataModels
             {
                 Environment.SetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT", $"{null}");
                 System.Console.WriteLine($"Middleware class ===============================>: Invoke Method ==> i think it got some problem");
+                return httpContext.Response.WriteAsync("No DataBase Found!");
             }
+            
             return _next(httpContext);
         }
     }
