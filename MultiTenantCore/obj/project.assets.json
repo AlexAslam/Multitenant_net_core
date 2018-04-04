@@ -13297,6 +13297,7 @@
       "Microsoft.AspNetCore.All >= 2.0.6",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 2.0.2",
+      "Microsoft.Extensions.Configuration.EnvironmentVariables >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.3",
       "Npgsql >= 3.2.7",
@@ -13364,6 +13365,10 @@
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
             "version": "[2.0.2, )"
+          },
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",

@@ -13,6 +13,7 @@ namespace MultiTenantCore.DataModels.Mapper
         public MultiTenantCoreMappingProfile()
         {
             CreateMap<Tenant, TenantViewModel>().ReverseMap();
+            CreateMap<Employee, EmployeeViewModel>().ReverseMap();
         }
     }
 }

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MultiTenantCore.DataModels.Entities;
 using MultiTenantCore.DataModels.Repository;
-using MultiTenantCore.Helpers;
 using MultiTenantCore.ViewModels;
 
 namespace MultiTenantCore.Controllers
@@ -29,8 +24,6 @@ namespace MultiTenantCore.Controllers
         public IActionResult Get()
         {
             var results = _tenantRepository.getAllTenants();
-            var getHeaders = new HeaderInService();
-            //var proname = getHeaders.GetPropName();
 
             return Ok(_mapper.Map<IEnumerable<Tenant>, IEnumerable<TenantViewModel>>(results));
         }
