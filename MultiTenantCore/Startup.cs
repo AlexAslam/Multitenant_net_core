@@ -46,6 +46,7 @@ namespace MultiTenantCore
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMiddleware();
             System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
             app.UseMvc();
             using (var scope = app.ApplicationServices.CreateScope())

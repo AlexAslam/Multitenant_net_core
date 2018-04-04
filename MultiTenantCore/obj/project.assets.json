@@ -13295,6 +13295,7 @@
       "AutoMapper >= 6.2.2",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "Microsoft.AspNetCore.All >= 2.0.6",
+      "Microsoft.AspNetCore.Http.Abstractions >= 2.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.3",
@@ -13355,6 +13356,10 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "[2.0.6, )"
+          },
+          "Microsoft.AspNetCore.Http.Abstractions": {
+            "target": "Package",
+            "version": "[2.0.2, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
