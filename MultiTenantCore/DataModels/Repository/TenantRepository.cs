@@ -3,11 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MultiTenantCore.DataModels.Contexts;
 using MultiTenantCore.DataModels.Entities;
-using MultiTenantCore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MultiTenantCore.DataModels.Repository
 {
@@ -65,12 +63,10 @@ namespace MultiTenantCore.DataModels.Repository
             if (context.Database.EnsureCreated())
             {
                 context.Database.Migrate();
-                System.Console.WriteLine($"app=============================== connectionString >: {connectionString}");
                 return connectionString;
             }
             else
             {
-                System.Console.WriteLine($"app=============================== connectionString >: NULL");
                 return null;
             }
         }
@@ -82,23 +78,20 @@ namespace MultiTenantCore.DataModels.Repository
                 _context.Add(newTenant);
                 saveAll();
                 string connectionString = null;
-                //try
-                //{
-                connectionString = onTenantEntry(newTenant);
-
-                //}
-                //catch(Exception ex)
-                //{
-                //connectionString = null;
-                //}
-                System.Console.WriteLine($"app=============================== connectionString >: {connectionString}");
+                try
+                {
+                    connectionString = onTenantEntry(newTenant);
+                }
+                catch (Exception ex)
+                {
+                    connectionString = null;
+                }
                 try
                 {
                     if (connectionString != null)
                     {
                         var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
                         dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
-                        System.Console.WriteLine($"app=============================== tenant repository >: {_configuration.GetConnectionString("DefaultConnectionString")}");
                         TenantContext tenantContext_temp = new TenantContext(dbContextOptionsBuilder.Options);
                         Tenant recent_tenant = tenantContext_temp.Tenants.Last();
                         recent_tenant.ConnectionStringName = connectionString;

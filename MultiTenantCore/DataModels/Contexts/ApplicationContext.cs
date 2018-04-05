@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using MultiTenantCore.DataModels.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MultiTenantCore.DataModels.Contexts
 {
@@ -12,22 +8,18 @@ namespace MultiTenantCore.DataModels.Contexts
     { 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            
-            System.Console.WriteLine($"DbContextOptions= ApplicationContext ApplicationContext ==============================>: ");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            System.Console.WriteLine($"DbContextOptions= ModelBuilder ApplicationContext ==============================>: ");
             base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            if (Environment.GetEnvironmentVariable("database_variable_for_application_context")!=null && Environment.GetEnvironmentVariable("database_variable_for_application_context") != "")
+            if (Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT") !=null && Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT") != "")
             {
-                System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>:{Environment.GetEnvironmentVariable("database_variable_for_application_context")} ");
-                optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("database_variable_for_application_context"));
+                optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT"));
             }
             
         }

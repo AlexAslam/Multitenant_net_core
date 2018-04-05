@@ -23,7 +23,6 @@ namespace MultiTenantCore.DataModels
         }
         public void AddMigrations()
         {
-            System.Console.WriteLine($"app===============================>: in Migration Method!");
             if (_tenantContext.Tenants.Any())
             {
                 var tenants = _tenantContext.Tenants.ToList();
@@ -33,7 +32,6 @@ namespace MultiTenantCore.DataModels
                     {
                         var dbContextOptionsBuilder_ = new DbContextOptionsBuilder<ApplicationContext>();
                         dbContextOptionsBuilder_.UseNpgsql(newtenant.ConnectionStringName);
-                        System.Console.WriteLine($"app===============================>: {newtenant.ConnectionStringName}");
                         ApplicationContext context = new ApplicationContext(dbContextOptionsBuilder_.Options);
                         if (context.Database.EnsureCreated())
                         {
@@ -49,7 +47,6 @@ namespace MultiTenantCore.DataModels
                     }
                     var dbContextOptionsBuilder = new DbContextOptionsBuilder<TenantContext>();
                     dbContextOptionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnectionString"));
-                    System.Console.WriteLine($"app===============================>: {_configuration.GetConnectionString("DefaultConnectionString")}");
                 }
             }
             else {

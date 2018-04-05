@@ -6,6 +6,7 @@ namespace MultiTenantCore.ViewModels
     {
         [Required]
         public string SubDomainName { get; set; }
+        [Required]
         public string ConnectionStringName { get; set; }
     }
 }

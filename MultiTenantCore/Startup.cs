@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MultiTenantCore.DataModels;
 using MultiTenantCore.DataModels.Contexts;
 using MultiTenantCore.DataModels.Repository;
-using System;
 
 namespace MultiTenantCore
 {
@@ -19,13 +17,11 @@ namespace MultiTenantCore
         public Startup(IConfiguration config)
         {
             _config = config;
-            System.Console.WriteLine($"app===============================>: startup config");
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            System.Console.WriteLine($"app===============================>: startup services");
             services.AddDbContext<TenantContext>(options=>
             {
                 options.UseNpgsql(@"server=localhost;Port=5432;User Id=postgres;password=alex;DataBase=MultiTenantCore;Integrated Security=true;");
@@ -43,38 +39,17 @@ namespace MultiTenantCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            System.Console.WriteLine($"app===============================>: {env.EnvironmentName}");
-            
-
             app.UseMiddleware();
-            
-
             app.UseMvc();
-            
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<AppSeeder>();
                 seeder.AddMigrations();
             }
-            
-        }
-        private static string GetSubDomain(HttpContext httpContext)
-        {
-            var subDomain = string.Empty;
-
-            var host = httpContext.Request.Host.Host;
-
-            if (!string.IsNullOrWhiteSpace(host))
-            {
-                subDomain = host.Split('.')[0];
-            }
-
-            return subDomain.Trim().ToLower();
         }
     }
 }

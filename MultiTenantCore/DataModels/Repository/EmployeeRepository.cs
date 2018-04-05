@@ -27,7 +27,6 @@ namespace MultiTenantCore.DataModels.Repository
 
         public IEnumerable<Employee> getAllEmployees()
         {
-            System.Console.WriteLine($"EmployeeRepository= EmployeeRepository EmployeeRepository =================================>:");
             try
             {
                 return _context.Employees;
