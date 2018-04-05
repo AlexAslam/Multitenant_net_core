@@ -28,26 +28,35 @@ namespace MultiTenantCore.DataModels
         {
             var subdomain = httpContext.Request.Host.Host.Split('.')[0];
             System.Console.WriteLine($"Middleware class ===============================>: Invoke Method ==>{subdomain}");
-            if (_tenantContext.Tenants.Where(c => c.SubDomainName == subdomain).Count() > 0)
+
+            if ((_tenantContext.Tenants.Where(c => c.SubDomainName == subdomain).Count() > 0)&& subdomain != "localhost" )
             {
-                
+
                 //DbContextOptionsBuilder<ApplicationContext> appoptions = new DbContextOptionsBuilder<ApplicationContext>();
-                
-                var connection_string =_tenantContext.Tenants.Where(c => c.SubDomainName == subdomain && (c.ConnectionStringName != null && c.ConnectionStringName != "" )).Last().ConnectionStringName;
+                if (_tenantContext.Tenants.Where(c => c.SubDomainName == subdomain && (c.ConnectionStringName != null && c.ConnectionStringName != "")).Count() > 0)
+                {
+                    var connection_string = _tenantContext.Tenants.Where(c => c.SubDomainName == subdomain && (c.ConnectionStringName != null && c.ConnectionStringName != "")).Last().ConnectionStringName;
                 //appoptions.UseNpgsql(connection_string);
                 Environment.SetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT", $"{connection_string}");
                 System.Console.WriteLine(Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT"));
                 //ApplicationContext _applicationContext = new ApplicationContext(appoptions.Options);
                 //System.Console.WriteLine($"Middleware class ===============================>: Invoke Method ==>{_applicationContext.Employees.Count()}");
                 System.Console.WriteLine($"Middleware class ===============================>: Environment Variable ==>{Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT")}");
+                }
+                else
+                {
+                    return httpContext.Response.WriteAsync("No DataBase Found!");
+                }
             }
-            else
+            else if ((_tenantContext.Tenants.Where(c => c.SubDomainName == subdomain).Count() == 0) && subdomain != "localhost")
             {
                 Environment.SetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT", $"{null}");
                 System.Console.WriteLine($"Middleware class ===============================>: Invoke Method ==> i think it got some problem");
                 return httpContext.Response.WriteAsync("No DataBase Found!");
             }
-            
+            else
+            {
+            }
             return _next(httpContext);
         }
     }

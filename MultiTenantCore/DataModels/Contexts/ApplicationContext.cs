@@ -23,9 +23,13 @@ namespace MultiTenantCore.DataModels.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>: ");
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_VARIABLE_FOR_APPLICATION_CONTEXT"));
+            if (Environment.GetEnvironmentVariable("database_variable_for_application_context")!=null && Environment.GetEnvironmentVariable("database_variable_for_application_context") != "")
+            {
+                System.Console.WriteLine($"DbContextOptions= DbContextOptionsBuilder ApplicationContext ==============================>:{Environment.GetEnvironmentVariable("database_variable_for_application_context")} ");
+                optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("database_variable_for_application_context"));
+            }
+            
         }
 
 
