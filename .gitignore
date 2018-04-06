@@ -1,6 +1,2 @@
 .vs
-TestingMultiTenantCore
-MultiTenantCore/Migrations
-MultiTenantCore/bin
-MultiTenantCore/obj
 iis_deployment

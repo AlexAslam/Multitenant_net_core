@@ -1,0 +1,17 @@
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\TestingMultiTenantCore.deps.json
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\TestingMultiTenantCore.runtimeconfig.json
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\TestingMultiTenantCore.runtimeconfig.dev.json
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\TestingMultiTenantCore.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\TestingMultiTenantCore.pdb
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\MultiTenantCore.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\bin\Debug\netcoreapp2.0\MultiTenantCore.pdb
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.csprojResolveAssemblyReference.cache
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.csproj.CoreCompileInputs.cache
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.AssemblyInfoInputs.cache
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.AssemblyInfo.cs
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.csproj.CopyComplete
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.dll
+C:\Users\alexa\source\repos\MultiTenantCore\TestingMultiTenantCore\obj\Debug\netcoreapp2.0\TestingMultiTenantCore.pdb
